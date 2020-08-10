@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { getAllDogs } from '../../selectors/dogSelectors';
 
 export default function DogList() {
-  const dogs = useSelector(getAllDogs);
+  const dogList = useSelector(getAllDogs);
 
-  const listElement = dogs.map(({ name, breed, temperament, color }, i) => (
+  const listElement = dogList.map(({ name, breed, temperament, color }, i) => (
     <li key={i}>
       <h3>{name}</h3>
       <p>Breed: {breed}</p>
