@@ -1,4 +1,4 @@
-const { setDogList } = require('../actions/dogActions');
+const { setDogList, addNewDog } = require('../actions/dogActions');
 import { reducer } from '../reducers/appReducer';
 
 describe('app reducer', () => {
@@ -14,6 +14,29 @@ describe('app reducer', () => {
       temperament: 'Calm',
       color: 'Black'
     }]);
+
+    const newState = reducer(state, action);
+    expect(newState).toEqual({
+      dogs: [{
+        name: 'Leo',
+        breed: 'Black Lab',
+        temperament: 'Calm',
+        color: 'Black'
+      }] });
+  });
+
+  it('it adds a new dog with ADD_NEW_DOG', () => {
+
+    const state = {
+      dogs: []
+    };
+
+    const action = addNewDog({
+      name: 'Leo',
+      breed: 'Black Lab',
+      temperament: 'Calm',
+      color: 'Black'
+    });
 
     const newState = reducer(state, action);
     expect(newState).toEqual({
