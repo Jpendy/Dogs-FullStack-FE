@@ -10,10 +10,10 @@ export default function DogList() {
   const dispatch = useDispatch();
   const dogList = useSelector(getAllDogs);
 
-  //   const handleClick = () => {
-  //     deleteDog(id);
-  //     dispatch(deleteDogAction(id));
-  //   };
+  const handleClick = id => {
+    deleteDog(id);
+    dispatch(deleteDogAction(id));
+  };
 
   const listElement = dogList.map(({ name, _id }, i) => (
     <li key={i} className={styles.ListItem} >
@@ -22,7 +22,7 @@ export default function DogList() {
         <h3>{name}</h3>
       </Link>
 
-      <button onClick={() => {deleteDog(_id); dispatch(deleteDogAction(_id));}} >Delete</button>
+      <button onClick={() => handleClick(_id)} >Delete</button>
     </li>
   ));
   return (
