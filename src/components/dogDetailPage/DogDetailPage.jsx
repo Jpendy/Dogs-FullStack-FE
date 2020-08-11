@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { getDogById, patchDog, deleteDog } from '../../services/dogFetches';
+import { deleteDogAction } from '../../actions/dogActions';
 
 export default function DogDetailPage() {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [dog, setDog] = useState({});
   const [name, setName] = useState('');
@@ -33,6 +36,10 @@ export default function DogDetailPage() {
       .then(dog => setDog(dog));
   };
 
+  const handleClick = () => {
+    deleteDog(id);
+    dispatch(deleteDogAction(id));
+  };
 
   return (
     <>
@@ -56,7 +63,7 @@ export default function DogDetailPage() {
         </label>
         <button>Update Dog</button>
       </form>
-      <button  onClick={() => {deleteDog(id);}} >Delete Dog</button>
+      <button  onClick={handleClick} >Delete Dog</button>
     </>
   );
 }

@@ -14,7 +14,7 @@ export default function MainContainer() {
   useEffect(() => {
     getDogs()
       .then(dogs => dispatch(setDogList(dogs)));
-  }, [dogs]);
+  }, []);
 
   return (
     <>

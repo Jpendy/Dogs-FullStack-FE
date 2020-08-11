@@ -10,3 +10,9 @@ export const addNewDog = payload => ({
   type: ADD_NEW_DOG,
   payload
 });
+
+export const DELETE_DOG = 'DELETE_DOG';
+export const deleteDogAction = id => ({
+  type: DELETE_DOG,
+  payload: id
+});

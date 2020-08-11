@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getAllDogs } from '../../selectors/dogSelectors';
 import { deleteDog } from '../../services/dogFetches';
 import styles from './DogList.css';
+import { deleteDogAction } from '../../actions/dogActions';
 
 export default function DogList() {
+  const dispatch = useDispatch();
   const dogList = useSelector(getAllDogs);
+
+  //   const handleClick = () => {
+  //     deleteDog(id);
+  //     dispatch(deleteDogAction(id));
+  //   };
 
   const listElement = dogList.map(({ name, _id }, i) => (
     <li key={i} className={styles.ListItem} >
@@ -14,8 +21,8 @@ export default function DogList() {
       <Link to={`/${_id}`} >
         <h3>{name}</h3>
       </Link>
-      
-      <button onClick={() => {deleteDog(_id);}} >Delete</button>
+
+      <button onClick={() => {deleteDog(_id); dispatch(deleteDogAction(_id));}} >Delete</button>
     </li>
   ));
   return (

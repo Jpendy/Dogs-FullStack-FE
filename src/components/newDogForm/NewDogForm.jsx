@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { postDog } from '../../services/dogFetches';
+import { addNewDog } from '../../actions/dogActions';
 
 export default function NewDogForm() {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [breed, setBreed] = useState('');
   const [temperament, setTemperament] = useState('');
@@ -15,7 +18,8 @@ export default function NewDogForm() {
       breed,
       temperament,
       color
-    });
+    })
+      .then(dog => dispatch(addNewDog(dog)));
   };
 
   return (
