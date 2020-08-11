@@ -1,0 +1,11 @@
+.ListItem {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    align-items: center;
+
+    button {
+        height: 25px;
+        width: 60px;
+    }
+}

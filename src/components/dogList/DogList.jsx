@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getAllDogs } from '../../selectors/dogSelectors';
 import { deleteDog } from '../../services/dogFetches';
+import styles from './DogList.css';
 
 export default function DogList() {
   const dogList = useSelector(getAllDogs);
 
-  const listElement = dogList.map(({ name, breed, temperament, color, _id }, i) => (
-    <Link to={`/${_id}`} key={i}>
-      <li >
+  const listElement = dogList.map(({ name, _id }, i) => (
+    <li key={i} className={styles.ListItem} >
+
+      <Link to={`/${_id}`} >
         <h3>{name}</h3>
-        <p>Breed: {breed}</p>
-        <p>Temperament: {temperament}</p>
-        <p>Color: {color}</p>
-        <button onClick={() => {deleteDog(_id);}} >Delete</button>
-      </li>
-    </Link>
+      </Link>
+      
+      <button onClick={() => {deleteDog(_id);}} >Delete</button>
+    </li>
   ));
   return (
     <ul>
