@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLogin, useCurrentUser } from '../../hooks/AuthContext';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
+import AuthError from './AuthError';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -9,29 +10,33 @@ export default function Login() {
   const login = useLogin();
 
   const currentUser = useCurrentUser();
-  currentUser && history.push('/main-container');
+ 
+  if(currentUser) return <Redirect to="/dogs" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     login(username, password)
-      .then(() => history.push('/main-container'));
+      .then(() => history.push('/dogs'));
   };
 
   return (
-    <form onSubmit={handleSubmit} >
-      <input type='text' 
-        name='username'
-        value={username} 
-        placeholder='Username'
-        onChange={({ target }) => setUsername(target.value)}
-      />
-      <input type='password'
-        name='password'
-        value={password}
-        placeholder='Password'
-        onChange={({ target }) => setPassword(target.value)}
-      />
-      <button>Login</button>
-    </form>
+    <>
+      <AuthError />
+      <form onSubmit={handleSubmit} >
+        <input type='text' 
+          name='username'
+          value={username} 
+          placeholder='Username'
+          onChange={({ target }) => setUsername(target.value)}
+        />
+        <input type='password'
+          name='password'
+          value={password}
+          placeholder='Password'
+          onChange={({ target }) => setPassword(target.value)}
+        />
+        <button>Login</button>
+      </form>
+    </>
   );
 }

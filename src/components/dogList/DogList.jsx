@@ -11,14 +11,14 @@ export default function DogList() {
   const dogList = useSelector(getAllDogs);
 
   const handleClick = id => {
-    deleteDog(id);
-    dispatch(deleteDogAction(id));
+    deleteDog(id)
+      .then(() => dispatch(deleteDogAction(id)));
   };
 
   const listElement = dogList.map(({ name, _id }, i) => (
     <li key={i} className={styles.ListItem} >
 
-      <Link to={`/main-container/${_id}`} >
+      <Link to={`/dogs/${_id}`} >
         <h3>{name}</h3>
       </Link>
 

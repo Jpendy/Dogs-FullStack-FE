@@ -9,12 +9,12 @@ export default function Signup() {
   const history = useHistory();
 
   const currentUser = useCurrentUser();
-  currentUser && history.push('/main-container');
+  currentUser && history.push('/dogs');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(username, password)
-      .then(() => history.push('/main-container'));
+      .then(() => history.push('/dogs'));
   };
 
   return (

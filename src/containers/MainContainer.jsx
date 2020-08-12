@@ -7,7 +7,7 @@ import NewDogForm from '../components/newDogForm/NewDogForm';
 
 export default function MainContainer() {
   const dispatch = useDispatch();
-
+ 
   useEffect(() => {
     getDogs()
       .then(dogs => dispatch(setDogList(dogs)));

@@ -17,8 +17,17 @@ export const useLogin = () => {
   return login;
 };
 
-// export const useIsCurrentUser = () => {
-//   const currentUser = useCurrentUser();
-//   currentUser && history.push('/main-container');
-//   return;
-// };
+export const useLogout = () => {
+  const { logout } = useContext(AuthContext);
+  return logout;
+};
+
+export const useAuthLoading = () => {
+  const { authLoading } = useContext(AuthContext);
+  return authLoading;
+};
+  
+export const useAuthError = () => {
+  const { authError } = useContext(AuthContext);
+  return authError;
+};

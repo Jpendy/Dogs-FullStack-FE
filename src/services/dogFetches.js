@@ -1,46 +1,21 @@
+import { get, del, post, patch } from './requests';
 
 export const getDogs = () => {
-  return fetch('http://localhost:7890/api/v1/dogs/', {
-    credentials: 'include'
-  })
-    .then(res => res.json());
+  return get('/api/v1/dogs/');
+};
+
+export const postDog = dogObj => {
+  return post('/api/v1/dogs/', dogObj);
 };
 
 export const getDogById = id => {
-  return fetch(`http://localhost:7890/api/v1/dogs/${id}`, {
-    credentials: 'include'
-  })
-    .then(res => res.json());
-};
-
-export const postDog = (dogObj) => {
-  return fetch('http://localhost:7890/api/v1/dogs/', {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(dogObj) 
-  })
-    .then(res => res.json());
+  return get(`/api/v1/dogs/${id}`);
 };
 
 export const deleteDog = id => {
-  return fetch(`http://localhost:7890/api/v1/dogs/${id}`, {
-    method: 'DELETE',
-    credentials: 'include'
-  })
-    .then(res => res.json());
+  return del(`/api/v1/dogs/${id}`);
 };
 
 export const patchDog = (id, dogObj) => {
-  return fetch(`http://localhost:7890/api/v1/dogs/${id}`, {
-    method: 'PATCH',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(dogObj) 
-  })
-    .then(res => res.json());
+  return patch(`/api/v1/dogs/${id}`, dogObj);
 };

@@ -1,44 +1,17 @@
-// import { post, get } from '../services/requests';
-
-// export const fetchSignup = (username, password) => {
-//   return post('/api/v1/auth/signup', { username, password });
-// };
-
-// export const fetchLogin = (username, password) => {
-//   return post('/api/v1/auth/login', { username, password });
-// };
-
-const url = 'http://localhost:7890';
+import { post, get } from '../services/requests';
 
 export const fetchSignup = (username, password) => {
-  return fetch(`${url}/api/v1/auth/signup`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    credentials: 'include',
-    body: JSON.stringify({ username, password })    
-  })
-    .then(res => res.json());
+  return post('/api/v1/auth/signup', { username, password });
 };
 
 export const fetchLogin = (username, password) => {
-  return fetch(`${url}/api/v1/auth/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    credentials: 'include',
-    body: JSON.stringify({ username, password })    
-  })
-    .then(res => res.json());
+  return post('/api/v1/auth/login', { username, password });
 };
 
+export const fetchLogout = () => {
+  return get('/api/v1/auth/logout');
+};
 
-// export const fetchVerify = () => get('/api/v1/auth/verify');
 export const fetchVerify = () => {
-  return fetch('http://localhost:7890/api/v1/auth/verify', {
-    credentials: 'include'
-  })
-    .then(res => res.json());
+  return get('/api/v1/auth/verify');
 };

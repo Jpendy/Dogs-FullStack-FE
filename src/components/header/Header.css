@@ -1,0 +1,16 @@
+.HeaderLoggedIn {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    align-items: center;
+
+    button {
+        height: 25px;
+        width: 64px;
+    }
+}
+
+.HeaderLoggedOut {
+ margin: 20px;
+ display: flex;
+ justify-content: space-evenly;
+}

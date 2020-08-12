@@ -16,8 +16,8 @@ export default function App() {
       <Switch>
         <Route exact path ='/login' component={Login} />
         <Route exact path ='/signup' component={Signup} />
-        <PrivateRoute exact path='/main-container' component={MainContainer} />
-        <PrivateRoute exact path='/main-container/:id' component={DogDetailPage} />
+        <PrivateRoute exact path='/dogs' component={MainContainer} />
+        <PrivateRoute exact path='/dogs/:id' component={DogDetailPage} />
       </Switch>
     </Router>);
 }
