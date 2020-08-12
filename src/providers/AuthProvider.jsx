@@ -17,7 +17,7 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     setCurrentUser(null);
     fetchVerify()
-      .then(user => user === 'undefined' ? setCurrentUser(user) : setCurrentUser(null));
+      .then(user => user.status === 500 ? setCurrentUser(null) : setCurrentUser(user));
   }, []);
 
   return (
