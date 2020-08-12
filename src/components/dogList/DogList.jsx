@@ -18,7 +18,7 @@ export default function DogList() {
   const listElement = dogList.map(({ name, _id }, i) => (
     <li key={i} className={styles.ListItem} >
 
-      <Link to={`/${_id}`} >
+      <Link to={`/main-container/${_id}`} >
         <h3>{name}</h3>
       </Link>
 

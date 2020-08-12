@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postDog } from '../../services/dogFetches';
 import { addNewDog } from '../../actions/dogActions';
+import { useCurrentUser } from '../../hooks/AuthContext';
 
 export default function NewDogForm() {
   const dispatch = useDispatch();
@@ -10,10 +11,13 @@ export default function NewDogForm() {
   const [temperament, setTemperament] = useState('');
   const [color, setColor] = useState('');
 
+  const currentUser = useCurrentUser();
+  console.log(currentUser);
   const handleSubmit = e => {
     e.preventDefault();
 
     postDog({
+      user: currentUser._id,
       name,
       breed,
       temperament,
