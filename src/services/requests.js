@@ -1,7 +1,9 @@
 const NONBODY_METHODS = ['GET', 'DELETE'];
 
+const url = 'http://localhost:7890';
+
 const request = (path, method, body) => {
-  return fetch(`${process.env.API_URL}${path}`, {
+  return fetch(`${url}${path}`, {
     method,
     headers: NONBODY_METHODS.includes(method) ? {} : { 'Content-Type': 'application/json' },
     credentials: 'include',
@@ -15,7 +17,10 @@ const request = (path, method, body) => {
 };
 
 export const post = (path, body) => request(path, 'POST', body);
+export const patch = (path, body) => request(path, 'PATCH', body);
 export const get = path => request(path, 'GET');
+export const del = path => request(path, 'DELETE');
+
 
 
 

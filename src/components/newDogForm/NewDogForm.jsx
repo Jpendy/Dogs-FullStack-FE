@@ -12,7 +12,7 @@ export default function NewDogForm() {
   const [color, setColor] = useState('');
 
   const currentUser = useCurrentUser();
-  console.log(currentUser);
+
   const handleSubmit = e => {
     e.preventDefault();
 

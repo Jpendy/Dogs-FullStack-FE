@@ -8,8 +8,10 @@
 //   return post('/api/v1/auth/login', { username, password });
 // };
 
+const url = 'http://localhost:7890';
+
 export const fetchSignup = (username, password) => {
-  return fetch('http://localhost:7890/api/v1/auth/signup', {
+  return fetch(`${url}/api/v1/auth/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -21,7 +23,7 @@ export const fetchSignup = (username, password) => {
 };
 
 export const fetchLogin = (username, password) => {
-  return fetch('http://localhost:7890/api/v1/auth/login', {
+  return fetch(`${url}/api/v1/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
