@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { postDog } from '../../services/dogFetches';
 import { addNewDog } from '../../actions/dogActions';
 import { useCurrentUser } from '../../hooks/AuthContext';
+import styles from './newDogForm.css';
 
 export default function NewDogForm() {
   const dispatch = useDispatch();
@@ -28,19 +29,11 @@ export default function NewDogForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} >
-        <label>Name: 
-          <input type='text' name='name' onChange={({ target }) => setName(target.value)} />
-        </label>
-        <label>Breed: 
-          <input type='text' name='breed' onChange={({ target }) => setBreed(target.value)} />
-        </label>
-        <label>Temperament: 
-          <input type='text' name='temperament' onChange={({ target }) => setTemperament(target.value)} />
-        </label>
-        <label>Color: 
-          <input type='text' name='color' onChange={({ target }) => setColor(target.value)} />
-        </label>
+      <form className={styles.Form} onSubmit={handleSubmit} >
+        <input placeholder='name' type='text' name='name' onChange={({ target }) => setName(target.value)} />
+        <input placeholder='breed' type='text' name='breed' onChange={({ target }) => setBreed(target.value)} />
+        <input placeholder='temperament' type='text' name='temperament' onChange={({ target }) => setTemperament(target.value)} />
+        <input placeholder='color' type='text' name='color' onChange={({ target }) => setColor(target.value)} />
         <button>Create New Dog</button>
       </form>
     </div>

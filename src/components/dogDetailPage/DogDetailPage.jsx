@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getDogById, patchDog, deleteDog } from '../../services/dogFetches';
 import { deleteDogAction } from '../../actions/dogActions';
+import styles from './DogDetailPage.css';
 
 export default function DogDetailPage() {
   const dispatch = useDispatch();
@@ -43,24 +44,18 @@ export default function DogDetailPage() {
 
   return (
     <>
-      <h3>{dog.name}</h3>
-      <p>Breed: {dog.breed}</p>
-      <p>Temperament: {dog.temperament}</p>
-      <p>Color: {dog.color}</p>
-
-      <form onSubmit={handleSubmit} >
-        <label>Name:
-          <input type='text' value={name} name='name' onChange={({ target }) => setName(target.value)} />
-        </label>
-        <label>Breed: 
-          <input type='text' value={breed} name='breed' onChange={({ target }) => setBreed(target.value)} />
-        </label>
-        <label>Temperament: 
-          <input type='text' value={temperament} name='temperament' onChange={({ target }) => setTemperament(target.value)} />
-        </label>
-        <label>Color: 
-          <input type='text' value={color} name='color' onChange={({ target }) => setColor(target.value)} />
-        </label>
+      <section className={styles.DogSection} >
+        <h3>{dog.name}</h3>
+        <p>Breed: {dog.breed}</p>
+        <p>Temperament: {dog.temperament}</p>
+        <p>Color: {dog.color}</p>
+      </section>
+      
+      <form className={styles.Form} onSubmit={handleSubmit} >
+        <input placeholder='name' type='text' value={name} name='name' onChange={({ target }) => setName(target.value)} />
+        <input placeholder='breed' type='text' value={breed} name='breed' onChange={({ target }) => setBreed(target.value)} />
+        <input placeholder='temperament' type='text' value={temperament} name='temperament' onChange={({ target }) => setTemperament(target.value)} />
+        <input placeholder='color' type='text' value={color} name='color' onChange={({ target }) => setColor(target.value)} />
         <button>Update Dog</button>
       </form>
       <button  onClick={handleClick} >Delete Dog</button>
