@@ -9,7 +9,7 @@ export const reducer = (state, action) => {
     case SET_DOG_LIST:
       return { ...state, dogs: action.payload };
     case ADD_NEW_DOG:
-      return { ...state, dogs: [...state.dogs, action.payload] };
+      return { ...state, dogs: [action.payload, ...state.dogs] };
     case DELETE_DOG:
       return { ...state, dogs: state.dogs.filter(item => item._id !== action.payload) };
     default:

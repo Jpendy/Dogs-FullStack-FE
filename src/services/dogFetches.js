@@ -2,7 +2,7 @@ import { get, del, post, patch } from './requests';
 
 export const postDog = dogObj => post('/api/v1/dogs/', dogObj);
 
-export const getDogs = () => get('/api/v1/dogs/');
+export const getDogs = (page = 1) => get(`/api/v1/dogs?page=${page}`);
 
 export const getDogById = id => get(`/api/v1/dogs/${id}`);
 

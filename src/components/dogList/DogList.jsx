@@ -9,7 +9,7 @@ import { deleteDogAction } from '../../actions/dogActions';
 export default function DogList() {
   const dispatch = useDispatch();
   const dogList = useSelector(getAllDogs);
-
+  
   const handleClick = id => {
     deleteDog(id)
       .then(() => dispatch(deleteDogAction(id)));
