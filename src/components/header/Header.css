@@ -1,0 +1,62 @@
+.HeaderLoggedIn {
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+
+    button {
+        margin-right: 20px;
+        border: 1px solid black;
+        height: 35px;
+        width: 64px;
+        font-size: 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        background: lightgray;
+
+        &:hover {
+            background: lightblue;
+            }
+    }
+     h3 {
+         margin-left: 20px
+     }
+     .leftSection {
+         display: flex;
+         align-items: center;
+     }
+
+     .HomeLink {
+         margin-left: 20px;
+         padding: 8px;
+         font-size: 14px;
+         text-decoration: none;
+         border: 1px solid black;
+         border-radius: 6px;
+         background: lightgray;
+         color: black;
+
+         &:hover {
+            background: lightblue;
+            }
+         
+     }
+}
+
+.HeaderLoggedOut {
+margin: 30px 20px 60px 20px;
+
+ .Link {
+     margin: 20px;
+     text-decoration: none;
+     border: 1px solid black;
+     padding: 8px;
+     border-radius: 6px;
+     background-color: lightgray;
+     color: black;
+     transition: .02s;
+     
+    &:hover {
+    background: lightblue;
+    }
+ }
+}
